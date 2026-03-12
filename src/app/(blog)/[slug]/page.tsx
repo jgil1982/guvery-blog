@@ -3,8 +3,12 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { marked } from "marked";
 import { prisma } from "@/lib/prisma";
 import NewsletterForm from "@/components/blog/NewsletterForm";
+
+// Configure marked for safe rendering
+marked.setOptions({ gfm: true, breaks: true });
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface PageProps {
@@ -158,7 +162,9 @@ export default async function ArticlePage({ params }: PageProps) {
             prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline
             prose-code:bg-gray-100 prose-code:px-1 prose-code:rounded
             prose-table:text-sm"
-          dangerouslySetInnerHTML={{ __html: article.content }}
+          dangerouslySetInnerHTML={{
+            __html: marked.parse(article.content) as string,
+          }}
         />
 
         {/* Newsletter */}
