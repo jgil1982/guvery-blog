@@ -30,7 +30,16 @@ const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
     name: "Dashboard",
-    subItems: [{ name: "Ecommerce", path: "/", pro: false }],
+    subItems: [{ name: "Ecommerce", path: "/admin", pro: false }],
+  },
+  {
+    icon: <PageIcon />,
+    name: "Blog",
+    subItems: [
+      { name: "Artículos", path: "/admin/blog", pro: false },
+      { name: "Nuevo artículo", path: "/admin/blog/new", pro: false },
+      { name: "Suscriptores", path: "/admin/subscribers", pro: false },
+    ],
   },
   {
     icon: <CalenderIcon />,
@@ -308,7 +317,7 @@ const AppSidebar: React.FC = () => {
           !isExpanded && !isHovered ? "lg:justify-center" : "justify-start"
         }`}
       >
-        <Link href="/">
+        <Link href="/admin">
           {isExpanded || isHovered || isMobileOpen ? (
             <>
               <Image

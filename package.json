@@ -6,23 +6,33 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.11.1",
     "@fullcalendar/core": "^6.1.19",
     "@fullcalendar/daygrid": "^6.1.19",
     "@fullcalendar/interaction": "^6.1.19",
     "@fullcalendar/list": "^6.1.19",
     "@fullcalendar/react": "^6.1.19",
     "@fullcalendar/timegrid": "^6.1.19",
+    "@prisma/client": "^6.19.2",
     "@react-jvectormap/core": "^1.0.4",
     "@react-jvectormap/world": "^1.1.2",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/typography": "^0.5.19",
     "apexcharts": "^4.7.0",
     "autoprefixer": "^10.4.22",
+    "bcryptjs": "^3.0.3",
     "flatpickr": "^4.6.13",
     "next": "16.0.10",
+    "next-auth": "^5.0.0-beta.30",
+    "prisma": "^6.19.2",
     "react": "^19.2.0",
     "react-apexcharts": "^1.8.0",
     "react-dnd": "^16.0.1",
@@ -35,6 +45,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@svgr/webpack": "^8.1.0",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.19.25",
     "@types/react": "^19.2.1",
     "@types/react-dom": "^19.2.1",
@@ -43,6 +54,7 @@
     "eslint-config-next": "16.0.7",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   },
   "overrides": {

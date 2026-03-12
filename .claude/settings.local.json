@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/signin\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog/new\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog/[id]/edit\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/subscribers\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/api/admin/articles\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/api/admin/articles/[id]\")"
+    ]
+  }
+}
