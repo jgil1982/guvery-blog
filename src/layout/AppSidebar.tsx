@@ -7,6 +7,7 @@ import { useSidebar } from "../context/SidebarContext";
 import {
   BoxCubeIcon,
   CalenderIcon,
+  ChatIcon,
   ChevronDownIcon,
   GridIcon,
   HorizontaLDots,
@@ -39,6 +40,13 @@ const navItems: NavItem[] = [
       { name: "Artículos", path: "/admin/blog", pro: false },
       { name: "Nuevo artículo", path: "/admin/blog/new", pro: false },
       { name: "Suscriptores", path: "/admin/subscribers", pro: false },
+    ],
+  },
+  {
+    icon: <ChatIcon />,
+    name: "Feedback",
+    subItems: [
+      { name: "Comentarios de usuarios", path: "/feedback", pro: false },
     ],
   },
   {
