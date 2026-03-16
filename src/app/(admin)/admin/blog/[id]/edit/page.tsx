@@ -13,7 +13,7 @@ interface PageProps {
 
 export default async function EditArticlePage({ params }: PageProps) {
   const session = await auth();
-  if (!session) redirect("/admin/signin");
+  if (!session) redirect("/signin");
 
   const { id } = await params;
 

@@ -17,7 +17,7 @@ async function getArticles() {
 
 export default async function AdminBlogPage() {
   const session = await auth();
-  if (!session) redirect("/admin/signin");
+  if (!session) redirect("/signin");
 
   const articles = await getArticles();
 

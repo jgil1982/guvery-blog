@@ -14,8 +14,8 @@ export default function BlogFooter() {
               Guvery Blog
             </Link>
             <p className="mt-2 text-sm text-gray-500">
-              Aprende a comprar productos de USA desde Perú. Guías, comparativas
-              y todo lo que necesitas saber sobre importaciones personales.
+              El espacio de la comunidad Guvery para compartir reseñas,
+              experiencias y opiniones sobre el servicio.
             </p>
           </div>
 

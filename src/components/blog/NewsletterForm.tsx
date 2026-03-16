@@ -41,10 +41,10 @@ export default function NewsletterForm() {
   return (
     <section className="bg-blue-600 rounded-2xl p-8 md:p-12 text-white text-center">
       <h2 className="text-2xl md:text-3xl font-bold">
-        Recibe guías de compra en tu email
+        ¿Quieres escribir una reseña?
       </h2>
       <p className="mt-3 text-blue-100 text-sm md:text-base max-w-md mx-auto">
-        Sin spam. Solo los mejores consejos para comprar en USA desde Perú.
+        Déjanos tu email y te avisamos cuando puedas publicar tu experiencia con Guvery.
       </p>
 
       {status === "success" ? (

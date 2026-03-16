@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default async function AdminDashboard() {
   const session = await auth();
-  if (!session) redirect("/admin/signin");
+  if (!session) redirect("/signin");
 
   const [totalArticles, publishedArticles, draftArticles, totalSubscribers, activeSubscribers, categories] =
     await Promise.all([

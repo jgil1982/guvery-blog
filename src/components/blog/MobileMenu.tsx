@@ -43,12 +43,19 @@ export default function MobileMenu({ links }: { links: NavLink[] }) {
                 {link.label}
               </Link>
             ))}
+            <Link
+              href="/signin"
+              onClick={() => setOpen(false)}
+              className="mt-2 px-4 py-2.5 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium text-center hover:bg-gray-50 transition-colors"
+            >
+              Iniciar sesión
+            </Link>
             <a
               href="https://guvery.com"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="mt-2 px-4 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium text-center hover:bg-blue-700 transition-colors"
+              className="mt-1 px-4 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-medium text-center hover:bg-blue-700 transition-colors"
             >
               Ir a Guvery →
             </a>

@@ -9,7 +9,7 @@ export const metadata: Metadata = { title: "Nuevo artículo — Admin Guvery Blo
 
 export default async function NewArticlePage() {
   const session = await auth();
-  if (!session) redirect("/admin/signin");
+  if (!session) redirect("/signin");
 
   const categories = await prisma.category.findMany({ orderBy: { name: "asc" } });
 

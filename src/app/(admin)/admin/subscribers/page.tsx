@@ -8,7 +8,7 @@ export const metadata: Metadata = { title: "Suscriptores — Admin Guvery Blog" 
 
 export default async function AdminSubscribersPage() {
   const session = await auth();
-  if (!session) redirect("/admin/signin");
+  if (!session) redirect("/signin");
 
   const subscribers = await prisma.subscriber.findMany({
     orderBy: { subscribedAt: "desc" },

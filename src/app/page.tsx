@@ -1,6 +1,7 @@
 // src/app/page.tsx  — Public blog home (served at /)
 import { Metadata } from "next";
 import { Suspense } from "react";
+import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import ArticleCard from "@/components/blog/ArticleCard";
 import NewsletterForm from "@/components/blog/NewsletterForm";
@@ -11,13 +12,13 @@ import SearchInput from "@/components/blog/SearchInput";
 export const revalidate = 3600; // ISR: revalidate every hour
 
 export const metadata: Metadata = {
-  title: "Guvery Blog — Guías para comprar en USA desde Perú",
+  title: "Guvery Blog — Comparte tu experiencia con Guvery",
   description:
-    "Aprende a comprar en Amazon, eBay y más tiendas de USA desde Perú con Guvery. Guías de compra, comparativas y consejos para importaciones personales.",
+    "Esta es tu oportunidad de dejar tu feedback. Escribe una reseña o artículo sobre tu experiencia comprando con Guvery.",
   openGraph: {
-    title: "Guvery Blog — Guías para comprar en USA desde Perú",
+    title: "Guvery Blog — Comparte tu experiencia con Guvery",
     description:
-      "Aprende a comprar en Amazon, eBay y más tiendas de USA desde Perú con Guvery.",
+      "Esta es tu oportunidad de dejar tu feedback. Escribe una reseña o artículo sobre tu experiencia comprando con Guvery.",
     type: "website",
     siteName: "Guvery Blog",
   },
@@ -55,14 +56,13 @@ export default async function BlogHomePage({ searchParams }: PageProps) {
           {/* Hero */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-              Compra en USA desde Perú
+              Esta es tu oportunidad
               <br />
-              <span className="text-blue-600">sin complicaciones</span>
+              <span className="text-blue-600">de dejar tu feedback</span>
             </h1>
             <p className="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
-              Guías, comparativas y consejos para importar productos de USA a
-              Perú usando Guvery — el marketplace que conecta compradores con
-              viajeros.
+              Escribe una reseña o artículo sobre tu experiencia con Guvery.
+              Tu opinión ayuda a otros usuarios a conocer el servicio.
             </p>
 
             {/* Search */}
@@ -70,6 +70,16 @@ export default async function BlogHomePage({ searchParams }: PageProps) {
               <Suspense>
                 <SearchInput defaultValue={q ?? ""} />
               </Suspense>
+            </div>
+
+            {/* CTA login */}
+            <div className="mt-6">
+              <Link
+                href="/signin"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold text-sm hover:bg-blue-700 transition-colors"
+              >
+                Escribe tu reseña →
+              </Link>
             </div>
           </div>
 

@@ -39,6 +39,14 @@ export default async function BlogHeader() {
           </nav>
 
           <div className="flex items-center gap-3">
+            {/* Login button */}
+            <Link
+              href="/signin"
+              className="hidden sm:inline-flex items-center px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm font-medium hover:bg-gray-50 transition-colors"
+            >
+              Iniciar sesión
+            </Link>
+
             {/* Desktop CTA */}
             <a
               href="https://guvery.com"
