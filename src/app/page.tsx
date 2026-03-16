@@ -1,11 +1,14 @@
 // src/app/page.tsx  — Public blog home (served at /)
-// This root-level page takes precedence over route-group pages.
 import { Metadata } from "next";
+import { Suspense } from "react";
 import { prisma } from "@/lib/prisma";
 import ArticleCard from "@/components/blog/ArticleCard";
 import NewsletterForm from "@/components/blog/NewsletterForm";
 import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
+import SearchInput from "@/components/blog/SearchInput";
+
+export const revalidate = 3600; // ISR: revalidate every hour
 
 export const metadata: Metadata = {
   title: "Guvery Blog — Guías para comprar en USA desde Perú",
@@ -20,16 +23,29 @@ export const metadata: Metadata = {
   },
 };
 
-async function getArticles() {
+interface PageProps {
+  searchParams: Promise<{ q?: string }>;
+}
+
+async function getArticles(query?: string) {
   return prisma.article.findMany({
-    where: { status: "PUBLISHED" },
+    where: {
+      status: "PUBLISHED",
+      ...(query && {
+        OR: [
+          { title: { contains: query, mode: "insensitive" } },
+          { excerpt: { contains: query, mode: "insensitive" } },
+        ],
+      }),
+    },
     include: { category: true },
     orderBy: { publishedAt: "desc" },
   });
 }
 
-export default async function BlogHomePage() {
-  const articles = await getArticles();
+export default async function BlogHomePage({ searchParams }: PageProps) {
+  const { q } = await searchParams;
+  const articles = await getArticles(q);
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -48,7 +64,23 @@ export default async function BlogHomePage() {
               Perú usando Guvery — el marketplace que conecta compradores con
               viajeros.
             </p>
+
+            {/* Search */}
+            <div className="mt-8 flex justify-center">
+              <Suspense>
+                <SearchInput defaultValue={q ?? ""} />
+              </Suspense>
+            </div>
           </div>
+
+          {/* Search results label */}
+          {q && (
+            <p className="mb-6 text-sm text-gray-500">
+              {articles.length === 0
+                ? `Sin resultados para "${q}"`
+                : `${articles.length} resultado${articles.length !== 1 ? "s" : ""} para "${q}"`}
+            </p>
+          )}
 
           {/* Articles Grid */}
           {articles.length > 0 ? (
@@ -59,7 +91,9 @@ export default async function BlogHomePage() {
             </div>
           ) : (
             <div className="text-center py-20 text-gray-400">
-              <p className="text-lg">No hay artículos publicados todavía.</p>
+              <p className="text-lg">
+                {q ? `No se encontraron artículos para "${q}".` : "No hay artículos publicados todavía."}
+              </p>
             </div>
           )}
 

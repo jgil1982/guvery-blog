@@ -6,6 +6,8 @@ import { prisma } from "@/lib/prisma";
 import ArticleCard from "@/components/blog/ArticleCard";
 import NewsletterForm from "@/components/blog/NewsletterForm";
 
+export const revalidate = 3600; // ISR: revalidate every hour
+
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
