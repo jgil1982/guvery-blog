@@ -15,7 +15,6 @@ export default function SignUpForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState<"USER" | "ADMIN" | "SUPER_ADMIN">("USER");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -33,7 +32,7 @@ export default function SignUpForm() {
     const res = await fetch("/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: name.trim(), email, password, role }),
+      body: JSON.stringify({ name: name.trim(), email, password }),
     });
 
     const data = await res.json();
@@ -124,20 +123,6 @@ export default function SignUpForm() {
                     )}
                   </span>
                 </div>
-              </div>
-              <div>
-                <Label>
-                  Tipo de usuario <span className="text-error-500">*</span>
-                </Label>
-                <select
-                  value={role}
-                  onChange={(e) => setRole(e.target.value as "USER" | "ADMIN" | "SUPER_ADMIN")}
-                  className="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 shadow-theme-xs focus:border-brand-300 focus:outline-none focus:ring focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
-                >
-                  <option value="USER">Usuario</option>
-                  <option value="ADMIN">Administrador</option>
-                  <option value="SUPER_ADMIN">Super Administrador</option>
-                </select>
               </div>
               <div className="flex items-center gap-3">
                 <Checkbox
