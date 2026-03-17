@@ -22,31 +22,22 @@ export default function BlogFooter() {
           {/* Links */}
           <div>
             <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">
-              Categorías
+              Blog
             </h3>
             <ul className="mt-3 space-y-2">
               <li>
-                <Link
-                  href="/category/guias-de-compra"
-                  className="text-sm text-gray-500 hover:text-gray-900"
-                >
-                  Guías de Compra
+                <Link href="/" className="text-sm text-gray-500 hover:text-gray-900">
+                  Artículos
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/category/comparativas"
-                  className="text-sm text-gray-500 hover:text-gray-900"
-                >
-                  Comparativas
+                <Link href="/blog" className="text-sm text-gray-500 hover:text-gray-900">
+                  Reseñas de la comunidad
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/category/como-funciona-guvery"
-                  className="text-sm text-gray-500 hover:text-gray-900"
-                >
-                  Cómo Funciona Guvery
+                <Link href="/signin" className="text-sm text-gray-500 hover:text-gray-900">
+                  Escribe tu reseña
                 </Link>
               </li>
             </ul>

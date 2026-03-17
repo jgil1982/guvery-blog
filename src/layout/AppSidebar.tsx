@@ -40,6 +40,7 @@ const navItems: NavItem[] = [
       { name: "Artículos", path: "/admin/blog", pro: false },
       { name: "Nuevo artículo", path: "/admin/blog/new", pro: false },
       { name: "Suscriptores", path: "/admin/subscribers", pro: false },
+      { name: "Reseñas (mock)", path: "/blog", pro: false },
     ],
   },
   {

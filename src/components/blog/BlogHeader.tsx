@@ -11,6 +11,7 @@ export default async function BlogHeader() {
 
   const navLinks = [
     { label: "Inicio", href: "/" },
+    { label: "Reseñas", href: "/blog" },
     ...categories.map((c) => ({ label: c.name, href: `/category/${c.slug}` })),
   ];
 
