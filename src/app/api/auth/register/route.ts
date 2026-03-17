@@ -5,7 +5,9 @@ import bcrypt from "bcryptjs";
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, email, password } = await req.json();
+    const { name, email, password, role } = await req.json();
+    const VALID_ROLES = ["USER", "ADMIN", "SUPER_ADMIN"];
+    const userRole = VALID_ROLES.includes(role) ? role : "USER";
 
     if (!name?.trim() || !email?.trim() || !password) {
       return NextResponse.json(
@@ -39,7 +41,7 @@ export async function POST(req: NextRequest) {
         name: name.trim(),
         email: email.trim().toLowerCase(),
         password: hashed,
-        role: "USER",
+        role: userRole,
       },
       select: { id: true, name: true, email: true, role: true },
     });
