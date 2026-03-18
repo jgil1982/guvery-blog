@@ -8,7 +8,7 @@ import NewsletterForm from "@/components/blog/NewsletterForm";
 import { prisma } from "@/lib/prisma";
 import type { MockPost, MockPostRole } from "@/lib/mockPosts";
 
-export const revalidate = 60; // ISR: revalidar cada 60 segundos
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Reseñas de la comunidad — Guvery Blog",

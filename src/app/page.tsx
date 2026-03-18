@@ -9,7 +9,7 @@ import BlogHeader from "@/components/blog/BlogHeader";
 import BlogFooter from "@/components/blog/BlogFooter";
 import SearchInput from "@/components/blog/SearchInput";
 
-export const revalidate = 3600; // ISR: revalidate every hour
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Guvery Blog — Comparte tu experiencia con Guvery",

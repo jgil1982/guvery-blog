@@ -1,4 +1,5 @@
 // src/app/(admin)/admin/blog/reviews/[id]/edit/page.tsx
+export const dynamic = "force-dynamic";
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";

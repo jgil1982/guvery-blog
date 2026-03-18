@@ -7,7 +7,7 @@ import { marked } from "marked";
 import { prisma } from "@/lib/prisma";
 import NewsletterForm from "@/components/blog/NewsletterForm";
 
-export const revalidate = 3600; // ISR: revalidate every hour
+export const dynamic = "force-dynamic";
 
 // Configure marked for safe rendering
 marked.setOptions({ gfm: true, breaks: true });

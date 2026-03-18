@@ -1,4 +1,5 @@
 // src/app/(full-width-pages)/feedback/submit/page.tsx
+export const dynamic = "force-dynamic";
 import FeedbackForm from "@/components/feedback/FeedbackForm";
 import ThemeTogglerTwo from "@/components/common/ThemeTogglerTwo";
 import { ThemeProvider } from "@/context/ThemeContext";

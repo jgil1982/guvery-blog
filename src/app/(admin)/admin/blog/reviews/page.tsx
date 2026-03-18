@@ -1,4 +1,5 @@
 // src/app/(admin)/admin/blog/reviews/page.tsx
+export const dynamic = "force-dynamic";
 import { Metadata } from "next";
 import Link from "next/link";
 import { auth } from "@/lib/auth";
