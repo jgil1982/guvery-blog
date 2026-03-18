@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import { auth, signOut } from "@/lib/auth";
 import { Metadata } from "next";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Feedback | Guvery",
@@ -14,6 +15,10 @@ export const metadata: Metadata = {
 
 export default async function FeedbackSubmitPage() {
   const session = await auth();
+
+  if (!session) {
+    redirect("/signin?callbackUrl=/feedback/submit");
+  }
 
   return (
     <ThemeProvider>

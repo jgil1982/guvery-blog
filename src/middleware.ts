@@ -61,13 +61,8 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // /feedback/submit — any authenticated user
+  // /feedback/submit — auth handled by the page itself via auth()
   if (pathname.startsWith("/feedback/submit")) {
-    if (!isLoggedIn) {
-      const url = new URL("/signin", req.nextUrl.origin);
-      url.searchParams.set("callbackUrl", pathname);
-      return NextResponse.redirect(url);
-    }
     return NextResponse.next();
   }
 
