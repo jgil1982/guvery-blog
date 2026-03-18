@@ -26,7 +26,7 @@ export async function DELETE(
   }
 }
 
-// PATCH — toggle status VISIBLE/HIDDEN (admin only)
+// PATCH — update comment and/or status (admin only)
 export async function PATCH(
   req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
@@ -39,18 +39,41 @@ export async function PATCH(
   const { id } = await params;
 
   try {
-    const { status } = await req.json();
+    const body = await req.json();
+    const { status, comment } = body as { status?: string; comment?: string };
 
-    if (!["VISIBLE", "HIDDEN"].includes(status)) {
+    const data: { status?: string; comment?: string } = {};
+
+    if (status !== undefined) {
+      if (!["VISIBLE", "HIDDEN"].includes(status)) {
+        return NextResponse.json(
+          { error: "Estado inválido. Usa VISIBLE o HIDDEN." },
+          { status: 400 }
+        );
+      }
+      data.status = status;
+    }
+
+    if (comment !== undefined) {
+      if (comment.trim().length < 5) {
+        return NextResponse.json(
+          { error: "El comentario debe tener al menos 5 caracteres." },
+          { status: 400 }
+        );
+      }
+      data.comment = comment.trim();
+    }
+
+    if (Object.keys(data).length === 0) {
       return NextResponse.json(
-        { error: "Estado inválido. Usa VISIBLE o HIDDEN." },
+        { error: "Nada que actualizar." },
         { status: 400 }
       );
     }
 
     const feedback = await prisma.feedback.update({
       where: { id },
-      data: { status },
+      data,
       include: {
         user: { select: { id: true, name: true, email: true } },
       },

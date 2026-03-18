@@ -61,7 +61,7 @@ export default function BlogFooter() {
               </li>
               <li>
                 <a
-                  href="https://guvery.com"
+                  href="https://guvery.com/#comofunciona"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-gray-500 hover:text-gray-900"

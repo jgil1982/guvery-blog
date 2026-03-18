@@ -40,8 +40,6 @@ type FilterRole = "ALL" | MockPostRole;
 const FILTER_OPTIONS: { value: FilterRole; label: string }[] = [
   { value: "ALL", label: "Todos" },
   { value: "USER", label: "Usuarios" },
-  { value: "ADMIN", label: "Admins" },
-  { value: "SUPER_ADMIN", label: "Super Admin" },
 ];
 
 // ── Estado vacío ───────────────────────────────────────────────────────────
@@ -69,7 +67,7 @@ function EmptyState({ filtered }: { filtered: boolean }) {
       {!filtered && (
         <a
           href="/signin"
-          className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors"
+          className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#00594f] text-white text-sm font-semibold hover:bg-[#007a6c] transition-colors"
         >
           Escribe tu reseña →
         </a>
@@ -112,7 +110,7 @@ export default function BlogList({ posts }: { posts: MockPost[] }) {
             onClick={() => setFilter(opt.value)}
             className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
               filter === opt.value
-                ? "bg-blue-600 text-white"
+                ? "bg-[#00594f] text-white"
                 : "bg-white border border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50"
             }`}
           >

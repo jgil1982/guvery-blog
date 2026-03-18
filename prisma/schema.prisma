@@ -64,6 +64,21 @@ enum SubscriberStatus {
 }
 
 // ─────────────────────────────────────────────
+// POST (user-generated reviews)
+// ─────────────────────────────────────────────
+model Post {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  excerpt   String?
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
+// ─────────────────────────────────────────────
 // USER
 // ─────────────────────────────────────────────
 model User {
@@ -76,6 +91,7 @@ model User {
   accounts  Account[]
   sessions  Session[]
   feedbacks Feedback[]
+  posts     Post[]
 }
 
 enum UserRole {

@@ -48,26 +48,14 @@ export default function BlogCard({ post }: { post: MockPost }) {
 
   return (
     <article className="group flex flex-col bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
-      {/* Color bar por rol */}
-      <div
-        className={`h-1 w-full ${
-          post.role === "SUPER_ADMIN"
-            ? "bg-purple-500"
-            : post.role === "ADMIN"
-            ? "bg-blue-500"
-            : "bg-gray-300"
-        }`}
-      />
-
       <div className="flex flex-col flex-1 p-6">
-        {/* Header: rol + fecha */}
-        <div className="flex items-center justify-between mb-3">
-          <RoleBadge role={post.role} />
+        {/* Header: fecha */}
+        <div className="flex items-center justify-end mb-3">
           <time className="text-xs text-gray-400">{formatDate(post.createdAt)}</time>
         </div>
 
         {/* Título */}
-        <h2 className="text-lg font-bold text-gray-900 leading-snug group-hover:text-blue-600 transition-colors line-clamp-2 mb-2">
+        <h2 className="text-lg font-bold text-gray-900 leading-snug group-hover:text-[#00594f] transition-colors line-clamp-2 mb-2">
           {post.title}
         </h2>
 
@@ -84,7 +72,7 @@ export default function BlogCard({ post }: { post: MockPost }) {
         <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between">
           {/* Autor */}
           <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs font-bold shrink-0">
+            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-[#007a6c] to-[#00594f] flex items-center justify-center text-white text-xs font-bold shrink-0">
               {post.author.charAt(0).toUpperCase()}
             </div>
             <span className="text-sm font-medium text-gray-700">{post.author}</span>
@@ -93,7 +81,7 @@ export default function BlogCard({ post }: { post: MockPost }) {
           {/* Botón Leer más / Ver menos */}
           <button
             onClick={() => setExpanded((v) => !v)}
-            className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
+            className="inline-flex items-center gap-1 text-sm font-medium text-[#00594f] hover:text-[#004a42] transition-colors"
           >
             {expanded ? (
               <>

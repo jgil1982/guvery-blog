@@ -101,13 +101,21 @@ export default function FeedbackForm() {
           Tu comentario ha sido enviado correctamente y será revisado por nuestro
           equipo.
         </p>
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={() => setSuccess(false)}
-        >
-          Enviar otro comentario
-        </Button>
+        <div className="flex justify-center gap-3">
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={() => setSuccess(false)}
+          >
+            Enviar otro comentario
+          </Button>
+          <a
+            href="/"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-[#00594f] px-4 py-2 text-sm font-semibold text-white hover:bg-[#007a6c] transition-colors"
+          >
+            ← Volver al inicio
+          </a>
+        </div>
       </div>
     );
   }

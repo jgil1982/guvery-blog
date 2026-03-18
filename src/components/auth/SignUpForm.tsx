@@ -2,7 +2,6 @@
 import Checkbox from "@/components/form/input/Checkbox";
 import Input from "@/components/form/input/InputField";
 import Label from "@/components/form/Label";
-import Button from "@/components/ui/button/Button";
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "@/icons";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -142,9 +141,13 @@ export default function SignUpForm() {
                 </p>
               </div>
               <div>
-                <Button className="w-full" size="sm" disabled={loading}>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full inline-flex items-center justify-center rounded-lg bg-[#00594f] px-4 py-3 text-sm font-medium text-white transition hover:bg-[#007a6c] disabled:cursor-not-allowed disabled:opacity-50"
+                >
                   {loading ? "Creando cuenta..." : "Crear Cuenta"}
-                </Button>
+                </button>
               </div>
             </div>
           </form>
@@ -154,7 +157,7 @@ export default function SignUpForm() {
               ¿Ya tienes cuenta?{" "}
               <Link
                 href="/signin"
-                className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
+                className="text-[#00594f] hover:text-[#007a6c] dark:text-[#4db8a8]"
               >
                 Inicia sesión
               </Link>
