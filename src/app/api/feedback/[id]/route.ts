@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
+import { FeedbackStatus } from "@prisma/client";
 
 // DELETE — permanently remove a feedback (admin only)
 export async function DELETE(
@@ -42,16 +43,16 @@ export async function PATCH(
     const body = await req.json();
     const { status, comment } = body as { status?: string; comment?: string };
 
-    const data: { status?: string; comment?: string } = {};
+    const data: { status?: FeedbackStatus; comment?: string } = {};
 
     if (status !== undefined) {
-      if (!["VISIBLE", "HIDDEN"].includes(status)) {
+      if (!Object.values(FeedbackStatus).includes(status as FeedbackStatus)) {
         return NextResponse.json(
           { error: "Estado inválido. Usa VISIBLE o HIDDEN." },
           { status: 400 }
         );
       }
-      data.status = status;
+      data.status = status as FeedbackStatus;
     }
 
     if (comment !== undefined) {
