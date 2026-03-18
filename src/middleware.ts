@@ -48,11 +48,16 @@ export async function middleware(req: NextRequest) {
   }
 
   // Auth pages — redirect logged-in users to their home
-  if (pathname === "/signin" || pathname === "/signup") {
+  if (pathname === "/signin") {
     if (isLoggedIn) {
       const dest = role === "USER" ? "/feedback/submit" : "/admin";
       return NextResponse.redirect(new URL(dest, req.nextUrl.origin));
     }
+    return NextResponse.next();
+  }
+
+  // /signup — always accessible (newsletter subscription flow)
+  if (pathname === "/signup") {
     return NextResponse.next();
   }
 

@@ -75,7 +75,7 @@ export default async function BlogHomePage({ searchParams }: PageProps) {
             {/* CTA login */}
             <div className="mt-6">
               <Link
-                href="/signin"
+                href="/feedback/submit"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#00594f] text-white font-semibold text-sm hover:bg-[#007a6c] transition-colors"
               >
                 Escribe tu reseña →

@@ -1,7 +1,30 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/signin\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog/new\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog/[id]/edit\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/subscribers\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/api/admin/articles\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/api/admin/articles/[id]\")"
+      "Bash(mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/signin\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog/new\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/blog/[id]/edit\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(admin\\)/admin/subscribers\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/api/admin/articles\" && mkdir -p \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/api/admin/articles/[id]\")",
+      "Bash(pkill -f \"next\" 2>/dev/null; pkill -f \"node.*build\" 2>/dev/null; echo \"Procesos detenidos\")",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && rm -rf .next/dev && rm -rf .next && echo \".next eliminado\" || echo \"Intentando con sudo...\")",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && rm -rf node_modules && echo \"node_modules eliminado\")",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && npm install 2>&1 | tail -10)",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && npm install lightningcss 2>&1 | tail -5)",
+      "Bash(ls \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/node_modules/lightningcss/\"*.node 2>/dev/null || ls \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/node_modules/lightningcss-win32-x64-msvc/\" 2>/dev/null && echo \"lightningcss binario OK\")",
+      "Bash(find \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/node_modules\" -name \"lightningcss*\" -maxdepth 2 2>/dev/null | head -10)",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && npx prisma generate 2>&1 | grep -v \"baseline-browser-mapping\")",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && npm install marked @types/marked 2>&1 | tail -4)",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && node -e \"const p=require\\('./package.json'\\); console.log\\('postinstall:', p.scripts.postinstall\\); console.log\\('prisma seed:', p.prisma?.seed\\)\")",
+      "Bash(curl -s -o /dev/null -w \"/admin/signin → %{http_code}\\\\n\" http://localhost:3000/admin/signin && curl -s -o /dev/null -w \"/category/guias → %{http_code}\\\\n\" http://localhost:3000/category/guias-de-compra && curl -s -o /dev/null -w \"/api/newsletter → %{http_code} \\(debe ser 405 en GET\\)\\\\n\" http://localhost:3000/api/newsletter)",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && npx prisma migrate dev --name add_feedback_and_user_role 2>&1)",
+      "Bash(rm \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/tsconfig.tsbuildinfo\" && npx tsc --noEmit 2>&1)",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && npx tsc --noEmit 2>&1)",
+      "Bash(cd \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard\" && npm run dev 2>&1)",
+      "Bash(head -10 \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(blog\\)/[slug]/page.tsx\")",
+      "Bash(head -5 \"/mnt/c/Dev/Enter Tech Code/Demo-301-Lab21/free-nextjs-admin-dashboard/src/app/\\(blog\\)/category/[slug]/page.tsx\")",
+      "Bash(npx prisma generate)",
+      "Bash(npx prisma db push:*)",
+      "Bash(npx prisma db seed:*)",
+      "Bash(test:*)",
+      "WebFetch(domain:guvery.com)",
+      "Bash(git add:*)"
     ]
   }
 }
