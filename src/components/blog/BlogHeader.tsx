@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { auth } from "@/lib/auth";
 import MobileMenu from "./MobileMenu";
@@ -27,6 +28,7 @@ export default async function BlogHeader({ showCategories = true }: { showCatego
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 shrink-0">
+            <Image src="/favicon.ico" alt="Guvery" width={28} height={28} />
             <span className="text-xl font-bold text-gray-900">
               Guvery<span className="text-[#00594f] ml-1">Blog</span>
             </span>
