@@ -7,6 +7,7 @@ import { auth, signOut } from "@/lib/auth";
 import { Metadata } from "next";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Feedback | Guvery",
@@ -26,20 +27,31 @@ export default async function FeedbackSubmitPage() {
         {/* Header */}
         <header className="border-b border-gray-200 bg-white px-6 py-4 dark:border-gray-800 dark:bg-gray-900">
           <div className="mx-auto flex max-w-2xl items-center justify-between">
-            <Image
-              src="/images/logo/logo.svg"
-              alt="Guvery"
-              width={130}
-              height={34}
-              className="dark:hidden"
-            />
-            <Image
-              src="/images/logo/logo-dark.svg"
-              alt="Guvery"
-              width={130}
-              height={34}
-              className="hidden dark:block"
-            />
+            <div className="flex items-center gap-4">
+              <Link
+                href="/"
+                className="inline-flex items-center gap-1 text-sm text-gray-500 transition-colors hover:text-[#00594f] dark:text-gray-400 dark:hover:text-[#4db8a8]"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+                Inicio
+              </Link>
+              <Image
+                src="/images/logo/logo.svg"
+                alt="Guvery"
+                width={130}
+                height={34}
+                className="dark:hidden"
+              />
+              <Image
+                src="/images/logo/logo-dark.svg"
+                alt="Guvery"
+                width={130}
+                height={34}
+                className="hidden dark:block"
+              />
+            </div>
             <div className="flex items-center gap-4">
               {session?.user && (
                 <span className="hidden text-sm text-gray-500 dark:text-gray-400 sm:block">
