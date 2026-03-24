@@ -1,10 +1,9 @@
 // src/middleware.ts
-// Next.js middleware runs on Edge Runtime — cannot use Prisma directly.
-// Uses lightweight JWT check via getToken.
-import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+// NextAuth v5: use auth() wrapper instead of getToken() to correctly
+// read the authjs.session-token cookie (cookie name changed in v5).
+import { auth } from "@/lib/auth";
+import { NextResponse } from "next/server";
 
-// Routes that require ADMIN role. /feedback/submit is handled separately.
 const ADMIN_PREFIXES = [
   "/admin",
   "/feedback",
@@ -30,12 +29,11 @@ function requiresAdmin(pathname: string): boolean {
   );
 }
 
-export async function middleware(req: NextRequest) {
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-
+export default auth((req) => {
+  const session = req.auth;
   const { pathname } = req.nextUrl;
-  const isLoggedIn = !!token;
-  const role = token?.role as string | undefined;
+  const isLoggedIn = !!session;
+  const role = session?.user?.role as string | undefined;
 
   // Always allow: API routes, static assets
   if (
@@ -56,7 +54,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // /signup — always accessible (newsletter subscription flow)
+  // /signup — always accessible
   if (pathname === "/signup") {
     return NextResponse.next();
   }
@@ -81,9 +79,9 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
-  // Everything else is public (blog: /, /[slug], /category/[slug])
+  // Everything else is public
   return NextResponse.next();
-}
+});
 
 export const config = {
   matcher: ["/((?!_next/static|_next/image|favicon.ico|images/).*)" ],
