@@ -1,17 +1,14 @@
 // src/lib/auth.ts
-// Using JWT strategy with Credentials provider — no DB adapter needed.
-// Sessions are stored in signed JWT cookies, not in the database.
+// Full auth config with Credentials provider — NOT edge-compatible (uses Prisma + bcrypt).
+// Used by server components, API routes, and pages. Middleware uses auth.config.ts instead.
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
+import { authConfig } from "@/lib/auth.config";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  trustHost: true,
-  session: { strategy: "jwt" },
-  pages: {
-    signIn: "/signin",
-  },
+  ...authConfig,
   providers: [
     Credentials({
       name: "credentials",
@@ -44,19 +41,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.role = (user as { role: string }).role;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.sub as string;
-        session.user.role = token.role as string;
-      }
-      return session;
-    },
-  },
 });

@@ -1,8 +1,11 @@
 // src/middleware.ts
-// NextAuth v5: use auth() wrapper instead of getToken() to correctly
-// read the authjs.session-token cookie (cookie name changed in v5).
-import { auth } from "@/lib/auth";
+// Uses auth.config.ts (edge-compatible, no Prisma) so Next.js Edge Runtime
+// can evaluate the JWT session without importing Prisma or bcrypt.
+import NextAuth from "next-auth";
+import { authConfig } from "@/lib/auth.config";
 import { NextResponse } from "next/server";
+
+const { auth } = NextAuth(authConfig);
 
 const ADMIN_PREFIXES = [
   "/admin",
