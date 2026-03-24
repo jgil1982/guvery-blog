@@ -27,21 +27,26 @@ export default function SignInForm() {
     setError("");
     setLoading(true);
 
-    const result = await signIn("credentials", {
-      email: email.trim().toLowerCase(),
-      password,
-      redirect: false,
-    });
+    try {
+      const result = await signIn("credentials", {
+        email: email.trim().toLowerCase(),
+        password,
+        redirect: false,
+      });
 
-    setLoading(false);
+      setLoading(false);
 
-    if (result?.error) {
-      setError("Email o contraseña incorrectos.");
-      return;
+      if (!result || result.error || result.ok === false) {
+        setError("Email o contraseña incorrectos.");
+        return;
+      }
+
+      // Full page reload so middleware evaluates the new JWT and redirects by role
+      window.location.href = callbackUrl;
+    } catch {
+      setLoading(false);
+      setError("Error de conexión. Inténtalo de nuevo.");
     }
-
-    // Full page reload so middleware evaluates the new JWT and redirects by role
-    window.location.href = callbackUrl;
   };
 
   return (
